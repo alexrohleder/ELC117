@@ -45,5 +45,46 @@ ciclo i x = x ++ ciclo (i - 1) x
     Escreva uma função resursiva combine :: [Int] -> [String] -> [(Int, String)],
     que receba duas listas e combine seus elementos em tuplas.
 -}
+combine :: [Int] -> [String] -> [(Int, String)]
+combine [] _ = []
+combine _ [] = []
+combine (x:xs) (y:ys) = [(x, y)] ++ combine xs ys
 
---combine :: [Int] -> [String] -> [(Int, String)]
+{-
+    Escreva uma função numera :: [String] -> [(Int,String)], que receba uma lista
+    de palavras e retorne outra lista contendo tuplas com as palavras numeradas
+    a partir de 1. 
+-}
+numera :: [String] -> [(Int,String)]
+numera = _numera 1
+
+_numera :: Int -> [String] -> [(Int, String)]
+_numera _ [] = []
+_numera i (x:xs) = (i, x) : _numera (i + 1) xs
+
+{-
+    a. [ (x,y) | x <- [1..5], even x, y <- [(x + 1)..6], odd y ]
+        list comprehension, dois laços são feitos e dois filter são aplicados, a lista x recebe um
+        filtro por números pares e a lista y por números impares, logo após isto um map é executado
+        para construir uma tupla com x e y.
+
+    b. [ a ++ b | a <- ["lazy","big"], b <- ["frog", "dog"]]
+        mais uma função com list comprehension, esta expressão representa um duplo laço percorrendo
+        cada elemento do a com cada elemento do b, sendo o b o laço interior ao laço do a. a
+        concatenação é feita com a função mais a direita que funciona como um map.
+
+    c. concat [[a,'-'] | a <­ "paralelepipedo", a `elem` "aeiou"]
+        pega as vogais da palavra paralelepipedo e concatena elas usando o -, isto é feito list
+        comprehension, primeiro o comando a `elem` "aeiou" é executado sobre cada caracter da 
+        lista de caracteres (string) paralelepipedo, tomando a ação de um filter por se localizar
+        no lado direito da list comprehension, logo após o lado direito executa algo como um list
+        map montando uma lista de caracteres (string) concatenando cada caracter da lista resultante
+        e por último o concat junta estas strings que se encontram em uma lista de string.
+-}
+
+
+
+
+
+
+[ (x,y) | x <­ [1..5], even x, y <­ [(x + 1)..6], odd y ]
