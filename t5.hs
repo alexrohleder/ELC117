@@ -121,3 +121,11 @@ listToTuplaLC [] = ([], [])
 listToTuplaLC list = ([], [])
 
 -}
+
+{- 13
+    Refaça o exercício anterior usando funções de alta ordem.
+-}
+
+listToTuplaAO :: [(a, b)] -> ([a], [b])
+listToTuplaAO [] = ([], [])
+listToTuplaAO l = ( map (\x -> fst(x)) l , map (\x -> snd(x)) l )
