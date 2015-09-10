@@ -3,12 +3,14 @@
     list comprehension, para adicionar um dado sufixo às strings contidas
     numa lista. exemplo: addSuffix "@inf.ufsm.br" ["fulano", "beltrano"]
 -}
+
 addSuffix :: String -> [String] -> [String]
 addSuffix suffix list = [item ++ suffix | item <- list]
 
 {- 2
     Reescreva a função do exercício acima, desta vez usando recursão.
 -}
+
 addSuffixR :: String -> [String] -> [String]
 addSuffixR _ [] = []
 addSuffixR suffix (x:xs) = (x ++ suffix) : addSuffixR suffix xs
@@ -18,6 +20,7 @@ addSuffixR suffix (x:xs) = (x ++ suffix) : addSuffixR suffix xs
     lista de palavras e retorne a quantidade de palavras dessa lista que
     possuam menos de 5 caracteres. Use recursão.
 -}
+
 countShorts :: [String] -> Int
 countShorts [] = 0
 countShorts (x:xs)
@@ -27,6 +30,7 @@ countShorts (x:xs)
 {- 4
     Reescreva a função do exercício acima, desta vez usando list comprehension.
 -}
+
 countShortsC :: [String] -> Int
 countShortsC [] = 0
 countShortsC list = length [x | x <- list, length x < 5]
@@ -36,6 +40,7 @@ countShortsC list = length [x | x <- list, length x < 5]
     uma lista de inteiros, retornando uma nova lista com N repetições da lista
     original, com recurção.
 -}
+
 ciclo :: Int -> [Int] -> [Int]
 ciclo 0 list = list
 ciclo _ [] = []
@@ -45,6 +50,7 @@ ciclo i x = x ++ ciclo (i - 1) x
     Escreva uma função resursiva combine :: [Int] -> [String] -> [(Int, String)],
     que receba duas listas e combine seus elementos em tuplas.
 -}
+
 combine :: [Int] -> [String] -> [(Int, String)]
 combine [] _ = []
 combine _ [] = []
@@ -55,6 +61,7 @@ combine (x:xs) (y:ys) = [(x, y)] ++ combine xs ys
     de palavras e retorne outra lista contendo tuplas com as palavras numeradas
     a partir de 1. 
 -}
+
 numera :: [String] -> [(Int, String)]
 numera s = _numera 1 s
 
@@ -88,6 +95,7 @@ _numera i (x:xs) = (i, x) : _numera (i + 1) xs
     (As an exercise in problem decomposition, try first defining a "helper" function pairWithAll :: a -> [b] -> [(a,b)] 
         that pairs its first argument with each element in its second.)
 -}
+
 crossProduct :: [a] -> [b] -> [(a, b)]
 crossProduct _ [] = []
 crossProduct [] _ = []
@@ -109,18 +117,18 @@ pairWithAll x (y:ys) = (x, y) : pairWithAll x ys
 {- 11
     Escreva uma função recursiva que receba uma lista de tuplas e decomponha cada uma delas, gerando uma tupla de listas.
 -}
+
 listToTupla :: [(a, b)] -> ([a], [b])
 listToTupla [] = ([], [])
 listToTupla ((x,y):z) = ( x:(fst(listToTupla z)) , y:(snd(listToTupla z)) )
 
 {- 12
     Refaça o exercício anterior usando list comprehension.
+-}
 
 listToTuplaLC :: [(a, b)] -> ([a], [b])
 listToTuplaLC [] = ([], [])
-listToTuplaLC list = ([], [])
-
--}
+listToTuplaLC l = ( [fst(n) | n <- l] , [snd(n) | n <- l] )
 
 {- 13
     Refaça o exercício anterior usando funções de alta ordem.
