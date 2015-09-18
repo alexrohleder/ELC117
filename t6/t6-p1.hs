@@ -7,12 +7,19 @@ type Rect  = (Point, Float, Float)
 row_num = 8
 col_num = 5
 
-getLineSaturation :: Int -> String
-getLineSaturation row_itr =
-    let line_count = realToFrac row_itr
-        rows_count = realToFrac row_num
-        percent = ((rows_count + 1) - line_count) / rows_count * 100
-    in  "hsl(360, 100%, " ++ (show percent) ++ "%)"
+getHslColor :: Int -> Int -> String
+getHslColor col_itr row_itr =
+    let
+
+        col = realToFrac col_itr
+        cols = realToFrac col_num
+        s = ((cols + 1) - col) / cols * 100
+
+        row = realToFrac row_itr
+        rows = realToFrac row_num
+        l = ((rows + 1) - row) / rows * 100
+
+    in  "hsl(360, " ++ (show (120 - s)) ++ "%, " ++ (show l) ++ "%)"
 
 makeRect :: Float -> Float -> Float -> Float -> String -> String
 makeRect x y w h f = printf "<rect x='%.3f' y='%.3f' width='%.2f' height='%.2f' fill='%s' stroke='gray' stroke-width='2'/>" x y w h f
@@ -21,11 +28,11 @@ writeRect :: [Rect] -> Int -> Int -> String
 writeRect [] _ _ = ""
 writeRect (((x, y), w, h):rs) 0 m =
     let
-        f = getLineSaturation m
+        f = getHslColor 0 m
     in (makeRect x y w h f) ++ (writeRect rs col_num (m + 1))
 writeRect (((x, y), w, h):rs) n m =
     let
-        f = getLineSaturation m
+        f = getHslColor n m
     in (makeRect x y w h f) ++ (writeRect rs (n - 1) m)
 
 writeRects :: Float -> Float -> [Rect] -> String
