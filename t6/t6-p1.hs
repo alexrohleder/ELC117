@@ -46,8 +46,8 @@ main =
         rect_width  = 44
         rect_height = 20
 
-        xs = [0, rect_width..rect_width * 5]
-        ys = [0, rect_height..rect_height * 8]
+        xs = [0, rect_width..rect_width * row_num]
+        ys = [0, rect_height..rect_height * col_num]
 
         pw = last xs + rect_width
         ph = last ys + rect_height
