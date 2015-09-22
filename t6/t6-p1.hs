@@ -28,5 +28,5 @@ writeRects r = printf "<svg xmlns='http://www.w3.org/2000/svg'>%s</svg>" (writeR
 
 main :: IO ()
 main =
-    let rects = [((x, y), 44, 20) | y <- [0.0, 20.0 .. 20 * 8], x <- [0.0, 44 .. 44 * 5]]
+    let rects = [((x, y), 44.0, 20.0) | y <- [0.0, 20.0 .. 20.0 * 8.0], x <- [0.0, 44.0 .. 44.0 * 5.0]]
     in writeFile "colors1.svg" $ writeRects rects
