@@ -54,4 +54,4 @@ main =
 
         rects = [((x, y), rect_width, rect_height) | y <- ys, x <- xs]
      
-    in writeFile "colors.svg" $ writeRects pw ph rects
+    in writeFile "colors1.svg" $ writeRects pw ph rects
