@@ -1,12 +1,12 @@
 import Text.Printf
 
-type Point = (Float, Float)
-type Rect  = (Float, Point, Float, Float)
+type Point = (Double, Double)
+type Rect  = (Double, Point, Double, Double)
 
 row_num = 8
 col_num = 5
 
-getHslColor :: Float -> Int -> Int -> String
+getHslColor :: Double -> Int -> Int -> String
 getHslColor color col_itr row_itr =
     let
 
@@ -17,10 +17,9 @@ getHslColor color col_itr row_itr =
         row = realToFrac row_itr
         rows = realToFrac row_num
         l = ((rows + 1) - row) / rows * 100
+    in "hsl(" ++ show(color) ++ ", " ++ (show (120 - s)) ++ "%, " ++ (show l) ++ "%)"
 
-    in  "hsl(" ++ show(floor color) ++ ", " ++ (show (120 - s)) ++ "%, " ++ (show l) ++ "%)"
-
-makeRect :: Float -> Float -> Float -> Float -> String -> String
+makeRect :: Double -> Double -> Double -> Double -> String -> String
 makeRect x y w h f = printf "<rect x='%.3f' y='%.3f' width='%.2f' height='%.2f' fill='%s' stroke='gray' stroke-width='2'/>\n" x y w h f
 
 writeRect :: [Rect] -> Int -> Int -> String 
@@ -34,26 +33,14 @@ writeRect ((c, (x, y), w, h):rs) n m =
         f = getHslColor c n m
     in (makeRect x y w h f) ++ (writeRect rs (n - 1) m)
 
-writeRects :: Float -> Float -> [Rect] -> String
-writeRects w h r =
-    printf "<svg width='%.2f' height='%.2f' xmlns='http://www.w3.org/2000/svg'>\n%s</svg>" w h (writeRect r col_num 1)
+writeRects :: [Rect] -> String
+writeRects r =
+    printf "<svg xmlns='http://www.w3.org/2000/svg'>\n%s</svg>" (writeRect r col_num 1)
 
 main :: IO ()
 main =
     let
 
-        rect_width  = 44
-        rect_height = 20
-        palette_margin = 10
-        palette_count = 3
-
-        xs = concat [[x, x + rect_width .. x + rect_width * 5] | x <- [0, rect_width * 6 + palette_margin .. (rect_width * 6) * palette_count]]
-        ys = [0, rect_height..rect_height * 8]
-        cs = [360, 360 - (360 / palette_count) .. (360 / palette_count)]
-
-        pw = last xs + rect_width
-        ph = last ys + rect_height
-
-        rects = [(c, (x, y), rect_width, rect_height) | c <- cs, y <- ys, x <- xs]
+        rects = concat [[(360 / (p + 1), (x, y), 44.0, 20.0) | y <- [0.0, 20.0 .. 160.0], x <- [p * 220.0, p * 220.0 + 44.0 .. (p + 1) * 220.0]] | p <- [0 .. 2]]
      
-    in writeFile "colors2.svg" $ writeRects pw ph rects
+    in writeFile "colors2.svg" $ writeRects rects
