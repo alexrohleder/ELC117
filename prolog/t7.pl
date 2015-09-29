@@ -16,10 +16,8 @@ positivos([], []).
 positivos([H1|T1], [H2|T2]) :- H1 > -1, H2 is H1, positivos(T1, T2).
 positivos([H1|T1], L) :- H1 < 0, positivos(T1, L).
 
-mesmaPosicao(A, [], []).
+mesmaPosicao(_, [], []) :- false.
 mesmaPosicao(A, [A|T1], [A|T2]).
 mesmaPosicao(A, [H1|T1], [H2|T2]) :- mesmaPosicao(A, T1, T2).
 
-intercala(S, [], L).
-intercala(S, [X], L) :- [X].
-intercala(S, [H|T], [LH|LT]) :- LH is H, LT is S, intercala(S, T, LT).
+
