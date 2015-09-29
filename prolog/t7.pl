@@ -22,3 +22,7 @@ mesmaPosicao(A, [_|T1], [_|T2]) :- mesmaPosicao(A, T1, T2).
 intercala(_, [], []).
 intercala(_, [L], [L]).
 intercala(S, [H|T], [H,S|LT]) :- intercala(S, T, LT).
+
+comb(0, [], []).
+comb(NP, [H|T1], [H|T2]) :- NPD is NP - 1, comb(NPD, T1, T2).
+comb(NP, [_|T1], C) :- comb(NP, T1, C).
