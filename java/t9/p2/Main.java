@@ -12,8 +12,8 @@ class Main
         VehicleAbstract car = factory.car("ABC1234");
         VehicleAbstract motorcycle = factory.motorcycle("DEF5678"); 
 
-        doInOut(p, car);
-        doInOut(p, motorcycle);
+        this.doInOut(p, car);
+        this.doInOut(p, motorcycle);
     }
 
     public static void doInOut(Parking p, VehicleAbstract v)
