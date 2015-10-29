@@ -6,7 +6,7 @@ abstract class VehicleAbstract
 
     protected String plate;
 
-    public String getPlate(String plate)
+    public String getPlate()
     {
         return this.plate;
     }
@@ -14,6 +14,8 @@ abstract class VehicleAbstract
     public Void setPlate(String plate)
     {
         this.plate = plate;
+        
+        return null;
     }
 
 }

@@ -1,6 +1,8 @@
 
 package T9P2;
 
+import java.util.*;
+
 class Main
 {
 
@@ -12,8 +14,8 @@ class Main
         VehicleAbstract car = factory.car("ABC1234");
         VehicleAbstract motorcycle = factory.motorcycle("DEF5678"); 
 
-        this.doInOut(p, car);
-        this.doInOut(p, motorcycle);
+        doInOut(parking, car);
+        doInOut(parking, motorcycle);
     }
 
     public static void doInOut(Parking p, VehicleAbstract v)
@@ -21,9 +23,8 @@ class Main
         p.in(v);
 
         ArrayList s = p.out();
-
-        // O total de horas é gerado aleatóriamente entre 0 e 5.
-        System.out.printf("Veiculo '%s' deverá pagar R$%s.00 por %s horas.", s[0], s[1], s[2]);
+        
+        System.out.printf("Veiculo '%s' deverá pagar R$%.2g por %s horas.\n", s.get(0), s.get(1), s.get(2));
     }
 
 }

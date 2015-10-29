@@ -1,18 +1,18 @@
 
 package T9P2;
 
-import java.lang.Math;
 import java.util.Random;
+import java.util.*;
 
 class Parking
 {
 
     public VehicleAbstract vehicle;
-    public Double vehicleEntranceHour;
+    public Long vehicleEntranceHour;
 
     public Boolean in(VehicleAbstract vehicle)
     {
-        if (this.vehicle === null) {
+        if (this.vehicle == null) {
             this.vehicle = vehicle;
             this.vehicleEntranceHour = System.currentTimeMillis();
 
@@ -22,8 +22,8 @@ class Parking
 
     public ArrayList out()
     {
-        Random rand = new Random();
-        Double time = Math.round((System.currentTimeMillis() - this.vehicleEntranceHour) / 3600000 + rand.nextInt(5));
+        Random rand  = new Random();
+        Integer time = Math.round((System.currentTimeMillis() - this.vehicleEntranceHour) / 3600000 + rand.nextInt(5));
 
         ArrayList list = new ArrayList();
                   list.add(this.vehicle.getPlate());
