@@ -54,9 +54,20 @@ public abstract class AbstractConnector
     
     public void migrate() throws SQLException
     {
+        migrateFlagsTable();
         migrateStationsTable();
         migrateFuelsTable();
         migrateStationFuelsTable();
+    }
+    
+    private void migrateFlagsTable() throws SQLException
+    {
+        stmt.executeUpdate(
+                "CREATE TABLE Flags (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "name VARCHAR(80) NOT NULL" +
+                ")"
+        );
     }
     
     private void migrateStationsTable() throws SQLException
@@ -64,10 +75,10 @@ public abstract class AbstractConnector
         stmt.executeUpdate(
                 "CREATE TABLE Stations (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "id_flag INTEGER NOT NULL," +
                     "cnpj INTEGER NOT NULL," +
                     "name VARCHAR(80) NOT NULL," +
                     "companyName VARCHAR(80) NOT NULL," +
-                    "flag VARCHAR(80) NOT NULL," +
                     "address VARCHAR(80) NOT NULL," +
                     "cep INTEGER NOT NULL," +
                     "image VARCHAR(255) NOT NULL" +
