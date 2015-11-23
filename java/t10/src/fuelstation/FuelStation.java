@@ -3,7 +3,9 @@ package fuelstation;
 
 import fuelstation.database.connectors.AbstractConnector;
 import fuelstation.database.connectors.SQLiteConnector;
+import fuelstation.views.MainView;
 import java.sql.SQLException;
+import javax.swing.SwingUtilities;
 
 public class FuelStation
 {
@@ -20,6 +22,10 @@ public class FuelStation
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        
+        SwingUtilities.invokeLater(() -> {
+            new MainView().setVisible(true);
+        });
         
         conn.disconnect();
     }
