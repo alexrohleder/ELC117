@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -16,12 +23,26 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabs" alignment="0" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="420" max="32767" attributes="0"/>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="tabs" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabs" alignment="0" max="32767" attributes="0"/>
+          <EmptySpace min="0" pref="425" max="32767" attributes="0"/>
+          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="tabs" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -42,7 +63,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
@@ -56,8 +77,8 @@
                               <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="StationAddressField" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="StationCompanyField" max="32767" attributes="0"/>
-                                  <Component id="StationFlagField" max="32767" attributes="0"/>
+                                  <Component id="StationCompanyField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="StationFlagField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="StationCepField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="StationImageField" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -84,8 +105,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="StationNameField" max="32767" attributes="0"/>
-                                  <Component id="StationCnpjField" max="32767" attributes="0"/>
+                                  <Component id="StationNameField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="StationCnpjField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
