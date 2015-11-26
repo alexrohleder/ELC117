@@ -7,7 +7,9 @@ import fuelstation.database.models.FuelListModel;
 import fuelstation.database.models.FuelTableModel;
 import fuelstation.database.models.StationListModel;
 import fuelstation.database.models.StationTableModel;
+import java.io.File;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 
@@ -95,6 +97,12 @@ public class MainView extends javax.swing.JFrame
         StationImageLabel.setText("imagem");
 
         StationFlagField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        StationImageField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                StationImageFieldFocusGained(evt);
+            }
+        });
 
         StationInsertButton.setText("inserir");
         StationInsertButton.addActionListener(new java.awt.event.ActionListener() {
@@ -420,6 +428,16 @@ public class MainView extends javax.swing.JFrame
     private void StationSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationSearchButtonActionPerformed
         stationController.search();
     }//GEN-LAST:event_StationSearchButtonActionPerformed
+
+    private void StationImageFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_StationImageFieldFocusGained
+        if (StationImageField.getText().equals("")) {
+            JFileChooser fc = new JFileChooser();
+            if (fc.showOpenDialog(null) == fc.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                StationImageField.setText(file.getPath());
+            }
+        }
+    }//GEN-LAST:event_StationImageFieldFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton FuelClearButton;
