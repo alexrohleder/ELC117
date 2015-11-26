@@ -40,7 +40,7 @@ public class FuelController extends AbstractController<Fuel>
     {
         try {
             Fuel fuel = new Fuel();
-                 fuel.setName(view.getFuelNameField().getText());
+                 fuel.setType(view.getFuelTypeField().getSelectedItem().toString());
                  fuel.setPrice(Float.parseFloat(view.getFuelPriceField().getText()));
             return fuel;
         } catch (NumberFormatException e) {

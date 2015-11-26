@@ -3,7 +3,9 @@ package fuelstation.views;
 import fuelstation.controllers.FuelController;
 import fuelstation.controllers.StationController;
 import fuelstation.database.models.FlagListModel;
+import fuelstation.database.models.FuelListModel;
 import fuelstation.database.models.FuelTableModel;
+import fuelstation.database.models.StationListModel;
 import fuelstation.database.models.StationTableModel;
 import javax.swing.JComboBox;
 import javax.swing.JFormattedTextField;
@@ -27,6 +29,8 @@ public class MainView extends javax.swing.JFrame
         fuelTableModel = new FuelTableModel();
         fuelController = new FuelController(this, fuelTableModel);
         FuelTable.setModel(fuelTableModel);
+        FuelStationField.setModel(new StationListModel());
+        FuelTypeField.setModel(new FuelListModel());
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -55,10 +59,12 @@ public class MainView extends javax.swing.JFrame
         jScrollPane1 = new javax.swing.JScrollPane();
         StationTable = new javax.swing.JTable();
         FuelTab = new javax.swing.JPanel();
-        FuelNameLabel = new javax.swing.JLabel();
+        FuelStationLabel = new javax.swing.JLabel();
+        FuelTypeLabel = new javax.swing.JLabel();
         FuelPriceLabel = new javax.swing.JLabel();
         FuelDateLabel = new javax.swing.JLabel();
-        FuelNameField = new javax.swing.JTextField();
+        FuelStationField = new javax.swing.JComboBox();
+        FuelTypeField = new javax.swing.JComboBox();
         FuelPriceField = new javax.swing.JFormattedTextField(fuelstation.views.helpers.FieldMask.getMaskFormatter("R$##,###"));
         FuelDateField = new javax.swing.JFormattedTextField(fuelstation.views.helpers.FieldMask.getMaskFormatter("##/##/####"));
         FuelInsertButton = new javax.swing.JButton();
@@ -198,11 +204,17 @@ public class MainView extends javax.swing.JFrame
 
         FuelTab.setBackground(new java.awt.Color(255, 255, 255));
 
-        FuelNameLabel.setText("nome");
+        FuelStationLabel.setText("posto");
+
+        FuelTypeLabel.setText("tipo");
 
         FuelPriceLabel.setText("preço");
 
         FuelDateLabel.setText("coleta");
+
+        FuelStationField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        FuelTypeField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         FuelInsertButton.setText("inserir");
 
@@ -237,12 +249,12 @@ public class MainView extends javax.swing.JFrame
                         .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(FuelPriceLabel)
                             .addComponent(FuelDateLabel)
-                            .addComponent(FuelNameLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(FuelTypeLabel))
+                        .addGap(8, 8, 8)
                         .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(FuelNameField)
-                            .addComponent(FuelDateField)
-                            .addComponent(FuelPriceField)))
+                            .addComponent(FuelPriceField)
+                            .addComponent(FuelTypeField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(FuelDateField)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FuelTabLayout.createSequentialGroup()
                         .addGap(0, 97, Short.MAX_VALUE)
                         .addComponent(FuelClearButton)
@@ -251,7 +263,11 @@ public class MainView extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(FuelRemoveButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FuelInsertButton)))
+                        .addComponent(FuelInsertButton))
+                    .addGroup(FuelTabLayout.createSequentialGroup()
+                        .addComponent(FuelStationLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(FuelStationField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         FuelTabLayout.setVerticalGroup(
@@ -259,16 +275,20 @@ public class MainView extends javax.swing.JFrame
             .addGroup(FuelTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FuelNameLabel)
-                    .addComponent(FuelNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FuelStationLabel)
+                    .addComponent(FuelStationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(FuelTypeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FuelTypeLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FuelPriceLabel)
-                    .addComponent(FuelPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(FuelPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FuelPriceLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(FuelDateLabel)
-                    .addComponent(FuelDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(FuelDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FuelDateLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FuelInsertButton)
@@ -276,7 +296,7 @@ public class MainView extends javax.swing.JFrame
                     .addComponent(FuelUpdateButton)
                     .addComponent(FuelClearButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -307,13 +327,15 @@ public class MainView extends javax.swing.JFrame
     private javax.swing.JFormattedTextField FuelDateField;
     private javax.swing.JLabel FuelDateLabel;
     private javax.swing.JButton FuelInsertButton;
-    private javax.swing.JTextField FuelNameField;
-    private javax.swing.JLabel FuelNameLabel;
     private javax.swing.JFormattedTextField FuelPriceField;
     private javax.swing.JLabel FuelPriceLabel;
     private javax.swing.JButton FuelRemoveButton;
+    private javax.swing.JComboBox FuelStationField;
+    private javax.swing.JLabel FuelStationLabel;
     private javax.swing.JPanel FuelTab;
     private javax.swing.JTable FuelTable;
+    private javax.swing.JComboBox FuelTypeField;
+    private javax.swing.JLabel FuelTypeLabel;
     private javax.swing.JButton FuelUpdateButton;
     private javax.swing.JTextField StationAddressField;
     private javax.swing.JLabel StationAddressLabel;
@@ -340,8 +362,12 @@ public class MainView extends javax.swing.JFrame
     private javax.swing.JTabbedPane tabs;
     // End of variables declaration//GEN-END:variables
 
-    public JTextField getFuelNameField() {
-        return FuelNameField;
+    public JComboBox getFuelStationField() {
+        return FuelStationField;
+    }
+    
+    public JComboBox getFuelTypeField() {
+        return FuelTypeField;
     }
     
     public JFormattedTextField getFuelDateField() {
@@ -379,5 +405,4 @@ public class MainView extends javax.swing.JFrame
     public JTextField getStationNameField() {
         return StationNameField;
     }
-
 }

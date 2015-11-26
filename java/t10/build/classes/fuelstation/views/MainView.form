@@ -291,7 +291,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
@@ -299,13 +299,13 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="FuelPriceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="FuelDateLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="FuelNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="FuelTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="FuelNameField" max="32767" attributes="0"/>
-                                  <Component id="FuelDateField" max="32767" attributes="0"/>
                                   <Component id="FuelPriceField" max="32767" attributes="0"/>
+                                  <Component id="FuelTypeField" max="32767" attributes="0"/>
+                                  <Component id="FuelDateField" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -318,6 +318,11 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="FuelInsertButton" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="FuelStationLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="FuelStationField" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -328,18 +333,23 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="FuelNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="FuelNameField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FuelStationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FuelStationField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="FuelTypeField" min="-2" max="-2" attributes="0"/>
+                          <Component id="FuelTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="FuelPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="FuelPriceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FuelPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="FuelDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="FuelDateField" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FuelDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -349,16 +359,21 @@
                           <Component id="FuelClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="246" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="220" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="FuelNameLabel">
+            <Component class="javax.swing.JLabel" name="FuelStationLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="nome"/>
+                <Property name="text" type="java.lang.String" value="posto"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="FuelTypeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="tipo"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="FuelPriceLabel">
@@ -371,7 +386,29 @@
                 <Property name="text" type="java.lang.String" value="coleta"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="FuelNameField">
+            <Component class="javax.swing.JComboBox" name="FuelStationField">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="FuelTypeField">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
             </Component>
             <Component class="javax.swing.JFormattedTextField" name="FuelPriceField">
               <AuxValues>

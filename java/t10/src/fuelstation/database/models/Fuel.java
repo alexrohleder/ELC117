@@ -3,16 +3,16 @@ package fuelstation.database.models;
 public class Fuel
 {
     private Integer id;
-    private String name;
+    private String type;
     private Float price;
 
     public Fuel() {
         
     }
 
-    public Fuel(Integer id, String name, Float price) {
+    public Fuel(Integer id, String type, Float price) {
         this.id = id;
-        this.name = name;
+        this.type = type;
         this.price = price;
     }
 
@@ -24,12 +24,12 @@ public class Fuel
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getType() {
+        return type;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setType(String type) {
+        this.type = type;
     }
     
     public float getPrice() {
@@ -38,5 +38,10 @@ public class Fuel
     
     public void setPrice(float price) {
         this.price = price;
+    }
+    
+    @Override
+    public String toString() {
+        return type;
     }
 }

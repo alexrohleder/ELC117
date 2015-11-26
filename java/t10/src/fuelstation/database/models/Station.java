@@ -89,5 +89,8 @@ public class Station
         this.image = image;
     }
     
-    
+    @Override
+    public String toString() {
+        return name;
+    }
 }
