@@ -95,12 +95,32 @@ public class MainView extends javax.swing.JFrame
         StationFlagField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         StationInsertButton.setText("inserir");
+        StationInsertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StationInsertButtonActionPerformed(evt);
+            }
+        });
 
         StationRemoveButton.setText("remover");
+        StationRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StationRemoveButtonActionPerformed(evt);
+            }
+        });
 
         StationUpdateButton.setText("alterar");
+        StationUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StationUpdateButtonActionPerformed(evt);
+            }
+        });
 
         StationClearButton.setText("limpar");
+        StationClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StationClearButtonActionPerformed(evt);
+            }
+        });
 
         StationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,6 +133,11 @@ public class MainView extends javax.swing.JFrame
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        StationTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                StationTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(StationTable);
 
         javax.swing.GroupLayout StationTabLayout = new javax.swing.GroupLayout(StationTab);
@@ -217,12 +242,32 @@ public class MainView extends javax.swing.JFrame
         FuelTypeField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         FuelInsertButton.setText("inserir");
+        FuelInsertButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FuelInsertButtonActionPerformed(evt);
+            }
+        });
 
         FuelRemoveButton.setText("remover");
+        FuelRemoveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FuelRemoveButtonActionPerformed(evt);
+            }
+        });
 
         FuelUpdateButton.setText("alterar");
+        FuelUpdateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FuelUpdateButtonActionPerformed(evt);
+            }
+        });
 
         FuelClearButton.setText("limpar");
+        FuelClearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FuelClearButtonActionPerformed(evt);
+            }
+        });
 
         FuelTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -235,6 +280,11 @@ public class MainView extends javax.swing.JFrame
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        FuelTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FuelTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(FuelTable);
 
         javax.swing.GroupLayout FuelTabLayout = new javax.swing.GroupLayout(FuelTab);
@@ -321,6 +371,46 @@ public class MainView extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void StationInsertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationInsertButtonActionPerformed
+        stationController.insert();
+    }//GEN-LAST:event_StationInsertButtonActionPerformed
+
+    private void StationRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationRemoveButtonActionPerformed
+        stationController.remove();
+    }//GEN-LAST:event_StationRemoveButtonActionPerformed
+
+    private void StationUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationUpdateButtonActionPerformed
+        stationController.update();
+    }//GEN-LAST:event_StationUpdateButtonActionPerformed
+
+    private void StationClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationClearButtonActionPerformed
+        stationController.clear();
+    }//GEN-LAST:event_StationClearButtonActionPerformed
+
+    private void FuelInsertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuelInsertButtonActionPerformed
+        fuelController.insert();
+    }//GEN-LAST:event_FuelInsertButtonActionPerformed
+
+    private void FuelRemoveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuelRemoveButtonActionPerformed
+        fuelController.remove();
+    }//GEN-LAST:event_FuelRemoveButtonActionPerformed
+
+    private void FuelUpdateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuelUpdateButtonActionPerformed
+        fuelController.update();
+    }//GEN-LAST:event_FuelUpdateButtonActionPerformed
+
+    private void FuelClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuelClearButtonActionPerformed
+        fuelController.clear();
+    }//GEN-LAST:event_FuelClearButtonActionPerformed
+
+    private void StationTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StationTableMouseClicked
+        stationController.select();
+    }//GEN-LAST:event_StationTableMouseClicked
+
+    private void FuelTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuelTableMouseClicked
+        fuelController.select();
+    }//GEN-LAST:event_FuelTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton FuelClearButton;

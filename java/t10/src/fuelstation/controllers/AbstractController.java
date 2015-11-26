@@ -28,5 +28,6 @@ public abstract class AbstractController<Model>
     public abstract void update();
     public abstract void remove();
     public abstract void select();
-    public abstract Model  make();
+    public abstract void clear();
+    public abstract Model make();
 }
