@@ -1,7 +1,7 @@
 
 package fuelstation;
 
-import fuelstation.database.connectors.AbstractConnector;
+import fuelstation.database.connectors.Connection;
 import fuelstation.database.connectors.SQLiteConnector;
 import fuelstation.views.MainView;
 import java.sql.SQLException;
@@ -10,15 +10,13 @@ import javax.swing.UIManager;
 
 public class FuelStation
 {
-    protected static AbstractConnector conn = new SQLiteConnector();
-    
     public static void main(String[] args)
     {
-        conn.connect();
+        Connection.connect(new SQLiteConnector());
         
         try {
-            if (conn.migrated() == false) {
-                conn.migrate();
+            if (Connection.migrated() == false) {
+                Connection.migrate();
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -26,7 +24,7 @@ public class FuelStation
         
         init();
         
-        conn.disconnect();
+        Connection.disconnect();
     }
     
     protected static void init()

@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SQLiteConnector extends AbstractConnector
+public class SQLiteConnector implements ConectorInterface
 {
+    private Connection conn;
+    
     @Override
     public Connection getConnection()
     {
@@ -22,7 +24,7 @@ public class SQLiteConnector extends AbstractConnector
     }
     
     @Override
-    protected String getMigrationCheckSql()
+    public String getMigrationCheckSql()
     {
         return "SELECT name FROM sqlite_master WHERE name = 'Stations'";
     }

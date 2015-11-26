@@ -1,49 +1,47 @@
 package fuelstation.database.connectors;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public abstract class AbstractConnector
+public class Connection
 {
-    protected Statement stmt;
-    protected Connection conn = getConnection();
-    protected abstract Connection getConnection();
-    protected abstract String getMigrationCheckSql();
+    protected static Statement stmt;
+    protected static ConectorInterface conn;
     
-    public void connect()
+    public static void connect(ConectorInterface connector)
     {
         try {
-            stmt = conn.createStatement();
+            conn = connector;
+            stmt = conn.getConnection().createStatement();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
     
-    public void disconnect()
+    public static void disconnect()
     {
         try {
             stmt.close();
-            conn.close();
+            conn.getConnection().close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
     
-    public ResultSet execute(String sql) throws SQLException
+    public static ResultSet execute(String sql) throws SQLException
     {
         return stmt.executeQuery(sql);
     }
     
-    public boolean migrated() throws SQLException
+    public static boolean migrated() throws SQLException
     {
         if (stmt == null) {
             throw new SQLDataException("A conexão deve primeiramente ser estabelecida.");
         }
         
-        ResultSet result = execute(getMigrationCheckSql());
+        ResultSet result = execute(conn.getMigrationCheckSql());
         
         while (result.next()) {
             return true;
@@ -52,7 +50,7 @@ public abstract class AbstractConnector
         return false;
     }
     
-    public void migrate() throws SQLException
+    public static void migrate() throws SQLException
     {
         migrateFlagsTable();
         migrateStationsTable();
@@ -60,7 +58,7 @@ public abstract class AbstractConnector
         migrateStationFuelsTable();
     }
     
-    private void migrateFlagsTable() throws SQLException
+    private static void migrateFlagsTable() throws SQLException
     {
         stmt.executeUpdate(
                 "CREATE TABLE Flags (" +
@@ -70,7 +68,7 @@ public abstract class AbstractConnector
         );
     }
     
-    private void migrateStationsTable() throws SQLException
+    private static void migrateStationsTable() throws SQLException
     {
         stmt.executeUpdate(
                 "CREATE TABLE Stations (" +
@@ -86,7 +84,7 @@ public abstract class AbstractConnector
         );
     }
     
-    private void migrateFuelsTable() throws SQLException
+    private static void migrateFuelsTable() throws SQLException
     {
         stmt.executeUpdate(
                 "CREATE TABLE Fuels (" +
@@ -96,7 +94,7 @@ public abstract class AbstractConnector
         );
     }
     
-    private void migrateStationFuelsTable() throws SQLException
+    private static void migrateStationFuelsTable() throws SQLException
     {
         stmt.executeUpdate(
                 "CREATE TABLE StationFuels (" +
