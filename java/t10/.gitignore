@@ -1,4 +1,0 @@
-./build
-./lib
-!./lib/nblibraries.properties
-fuelstation.sqlite
