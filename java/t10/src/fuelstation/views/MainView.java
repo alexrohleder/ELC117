@@ -56,8 +56,8 @@ public class MainView extends javax.swing.JFrame
         FuelPriceLabel = new javax.swing.JLabel();
         FuelDateLabel = new javax.swing.JLabel();
         FuelNameField = new javax.swing.JTextField();
-        FuelPriceField = new javax.swing.JFormattedTextField();
-        FuelDateField = new javax.swing.JFormattedTextField();
+        FuelPriceField = new javax.swing.JFormattedTextField(fuelstation.views.helpers.FieldMask.getMaskFormatter("R$##,###"));
+        FuelDateField = new javax.swing.JFormattedTextField(fuelstation.views.helpers.FieldMask.getMaskFormatter("##/##/####"));
         FuelInsertButton = new javax.swing.JButton();
         FuelRemoveButton = new javax.swing.JButton();
         FuelUpdateButton = new javax.swing.JButton();
