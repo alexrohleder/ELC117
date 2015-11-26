@@ -11,7 +11,7 @@ public class FieldMask
 
         try {
             F_Mascara.setMask(format);
-            F_Mascara.setPlaceholderCharacter(' '); 
+            F_Mascara.setPlaceholderCharacter('_'); 
         } catch (ParseException e) {
             // continue
         }
