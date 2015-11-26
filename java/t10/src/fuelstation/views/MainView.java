@@ -1,9 +1,27 @@
 package fuelstation.views;
 
+import fuelstation.controllers.StationController;
+import fuelstation.database.models.FlagListModel;
+import fuelstation.database.models.FuelTableModel;
+import fuelstation.database.models.StationTableModel;
+
 public class MainView extends javax.swing.JFrame 
 {
+    private StationTableModel stationTableModel;
+    private StationController stationController;
+    private FuelTableModel fuelTableModel;
+    private FuelController fuelController;
+    
     public MainView() {
         initComponents();
+
+        stationTableModel = new StationTableModel();
+        stationController = new StationController(this, stationTableModel);
+        StationTable.setModel(stationTableModel);
+        StationFlagField.setModel(new FlagListModel());
+        
+        fuelTableModel = new FuelTableModel();
+        fuelController = new FuelController(this, fuelTableModel);
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
