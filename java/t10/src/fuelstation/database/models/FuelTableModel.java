@@ -8,6 +8,11 @@ public class FuelTableModel extends AbstractTableModel
     private static final String[] columnNames = {"id", "nome", "preço"};
     private ArrayList<Fuel> fuels;
     
+    public FuelTableModel()
+    {
+        fuels = new ArrayList<>();
+    }
+    
     @Override
     public int getColumnCount()
     {
