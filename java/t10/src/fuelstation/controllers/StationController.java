@@ -1,5 +1,6 @@
 package fuelstation.controllers;
 
+import fuelstation.database.models.Station;
 import fuelstation.database.models.StationTableModel;
 import fuelstation.views.MainView;
 
@@ -32,5 +33,16 @@ public class StationController extends AbstractController
     @Override
     public void select() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public Station make()
+    {
+        try {
+            Station station = new Station();
+            // ...
+            return station;
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }

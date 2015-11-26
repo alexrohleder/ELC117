@@ -5,6 +5,9 @@ import fuelstation.controllers.StationController;
 import fuelstation.database.models.FlagListModel;
 import fuelstation.database.models.FuelTableModel;
 import fuelstation.database.models.StationTableModel;
+import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
 
 public class MainView extends javax.swing.JFrame 
 {
@@ -336,4 +339,45 @@ public class MainView extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane tabs;
     // End of variables declaration//GEN-END:variables
+
+    public JTextField getFuelNameField() {
+        return FuelNameField;
+    }
+    
+    public JFormattedTextField getFuelDateField() {
+        return FuelDateField;
+    }
+
+    public JFormattedTextField getFuelPriceField() {
+        return FuelPriceField;
+    }
+
+    public JTextField getStationAddressField() {
+        return StationAddressField;
+    }
+
+    public JFormattedTextField getStationCepField() {
+        return StationCepField;
+    }
+
+    public JFormattedTextField getStationCnpjField() {
+        return StationCnpjField;
+    }
+
+    public JTextField getStationCompanyField() {
+        return StationCompanyField;
+    }
+
+    public JComboBox getStationFlagField() {
+        return StationFlagField;
+    }
+
+    public JTextField getStationImageField() {
+        return StationImageField;
+    }
+
+    public JTextField getStationNameField() {
+        return StationNameField;
+    }
+
 }

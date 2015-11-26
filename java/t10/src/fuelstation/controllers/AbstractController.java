@@ -3,7 +3,7 @@ package fuelstation.controllers;
 import javax.swing.table.AbstractTableModel;
 import fuelstation.views.MainView;
 
-public abstract class AbstractController
+public abstract class AbstractController<Model>
 {
     private MainView view;
     private AbstractTableModel model;
@@ -28,4 +28,5 @@ public abstract class AbstractController
     public abstract void update();
     public abstract void remove();
     public abstract void select();
+    public abstract Model  make();
 }
