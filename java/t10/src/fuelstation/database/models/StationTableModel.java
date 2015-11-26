@@ -11,6 +11,7 @@ public class StationTableModel extends AbstractTableModel
     public StationTableModel()
     {
         stations = new ArrayList<>();
+        stations.add(new Station(1, 99999999, "teste", "huhu", new Flag(3, "Texaco"), "rua tal", 9803894));
     }
     
     @Override

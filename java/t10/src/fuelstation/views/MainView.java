@@ -72,7 +72,7 @@ public class MainView extends javax.swing.JFrame
         FuelRemoveButton = new javax.swing.JButton();
         FuelUpdateButton = new javax.swing.JButton();
         FuelClearButton = new javax.swing.JButton();
-        FuelSearchButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         FuelTable = new javax.swing.JTable();
 
@@ -278,8 +278,8 @@ public class MainView extends javax.swing.JFrame
             }
         });
 
-        FuelSearchButton.setText("pesquisar");
-        FuelSearchButton.setEnabled(false);
+        jButton2.setText("pesquisar");
+        jButton2.setEnabled(false);
 
         FuelTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -292,11 +292,6 @@ public class MainView extends javax.swing.JFrame
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        FuelTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FuelTableMouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(FuelTable);
 
         javax.swing.GroupLayout FuelTabLayout = new javax.swing.GroupLayout(FuelTab);
@@ -320,7 +315,7 @@ public class MainView extends javax.swing.JFrame
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FuelTabLayout.createSequentialGroup()
                         .addComponent(FuelClearButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FuelSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(FuelUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -357,7 +352,7 @@ public class MainView extends javax.swing.JFrame
                     .addComponent(FuelInsertButton)
                     .addComponent(FuelRemoveButton)
                     .addComponent(FuelUpdateButton)
-                    .addComponent(FuelSearchButton)
+                    .addComponent(jButton2)
                     .addComponent(FuelClearButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -419,12 +414,8 @@ public class MainView extends javax.swing.JFrame
     }//GEN-LAST:event_FuelClearButtonActionPerformed
 
     private void StationTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StationTableMouseClicked
-        stationController.select();
+        new StationView(this, false, stationController).setVisible(true);
     }//GEN-LAST:event_StationTableMouseClicked
-
-    private void FuelTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuelTableMouseClicked
-        fuelController.select();
-    }//GEN-LAST:event_FuelTableMouseClicked
 
     private void StationSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationSearchButtonActionPerformed
         stationController.search();
@@ -438,7 +429,6 @@ public class MainView extends javax.swing.JFrame
     private javax.swing.JFormattedTextField FuelPriceField;
     private javax.swing.JLabel FuelPriceLabel;
     private javax.swing.JButton FuelRemoveButton;
-    private javax.swing.JButton FuelSearchButton;
     private javax.swing.JComboBox FuelStationField;
     private javax.swing.JLabel FuelStationLabel;
     private javax.swing.JPanel FuelTab;
@@ -467,6 +457,7 @@ public class MainView extends javax.swing.JFrame
     private javax.swing.JPanel StationTab;
     private javax.swing.JTable StationTable;
     private javax.swing.JButton StationUpdateButton;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane tabs;
