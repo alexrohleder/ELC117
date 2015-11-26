@@ -5,7 +5,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class FuelTableModel extends AbstractTableModel
 {
-    private static final String[] columnNames = {"id", "nome"};
+    private static final String[] columnNames = {"id", "nome", "preço"};
     private ArrayList<Fuel> fuels;
     
     @Override
@@ -32,6 +32,7 @@ public class FuelTableModel extends AbstractTableModel
         switch (columnIndex) {
             case 0: return fuels.get(rowIndex).getId();
             case 1: return fuels.get(rowIndex).getName();
+            case 2: return fuels.get(rowIndex).getPrice();
 
             default: return null;
         }

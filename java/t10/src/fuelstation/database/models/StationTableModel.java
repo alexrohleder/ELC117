@@ -8,6 +8,11 @@ public class StationTableModel extends AbstractTableModel
     private static final String[] columnNames = {"id", "cnpj", "nome", "nome social", "bandeira", "endereço", "cep"};
     private ArrayList<Station> stations;
     
+    public StationTableModel()
+    {
+        stations = new ArrayList<>();
+    }
+    
     @Override
     public int getColumnCount()
     {
@@ -34,7 +39,7 @@ public class StationTableModel extends AbstractTableModel
             case 1: return stations.get(rowIndex).getCnpj();
             case 2: return stations.get(rowIndex).getName();
             case 3: return stations.get(rowIndex).getCompanyName();
-            case 4: return stations.get(rowIndex).getFlag();
+            case 4: return stations.get(rowIndex).getFlag().getName();
             case 5: return stations.get(rowIndex).getAddress();
             case 6: return stations.get(rowIndex).getCep();
 
