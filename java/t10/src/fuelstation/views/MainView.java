@@ -18,12 +18,12 @@ public class MainView extends javax.swing.JPanel
         StationAddressLabel = new javax.swing.JLabel();
         StationCepLabel = new javax.swing.JLabel();
         StationImageLabel = new javax.swing.JLabel();
-        StationCnpjField = new javax.swing.JFormattedTextField();
+        StationCnpjField = new javax.swing.JFormattedTextField(fuelstation.views.helpers.FieldMask.getMaskFormatter("##.###.###/####-##"));
         StationNameField = new javax.swing.JTextField();
         StationCompanyField = new javax.swing.JTextField();
         StationFlagField = new javax.swing.JComboBox();
         StationAddressField = new javax.swing.JTextField();
-        StationCepField = new javax.swing.JFormattedTextField();
+        StationCepField = new javax.swing.JFormattedTextField(fuelstation.views.helpers.FieldMask.getMaskFormatter("##.###-###"));
         StationImageField = new javax.swing.JTextField();
         StationInsertButton = new javax.swing.JButton();
         StationRemoveButton = new javax.swing.JButton();
