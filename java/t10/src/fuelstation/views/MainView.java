@@ -51,18 +51,7 @@ public class MainView extends javax.swing.JFrame
 
         StationImageLabel.setText("imagem");
 
-        StationCompanyField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StationCompanyFieldActionPerformed(evt);
-            }
-        });
-
         StationFlagField.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        StationFlagField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                StationFlagFieldActionPerformed(evt);
-            }
-        });
 
         StationInsertButton.setText("inserir");
 
@@ -208,14 +197,6 @@ public class MainView extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void StationCompanyFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationCompanyFieldActionPerformed
-
-    }//GEN-LAST:event_StationCompanyFieldActionPerformed
-
-    private void StationFlagFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationFlagFieldActionPerformed
-
-    }//GEN-LAST:event_StationFlagFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FuelTab;
