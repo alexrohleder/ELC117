@@ -62,9 +62,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="StationCompanyLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -77,24 +78,9 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="StationAddressField" alignment="1" max="32767" attributes="0"/>
                                   <Component id="StationCompanyField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="StationFlagField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="StationFlagField" alignment="0" pref="314" max="32767" attributes="0"/>
                                   <Component id="StationCepField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="StationImageField" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="StationClearButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="StationUpdateButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="StationRemoveButton" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="StationInsertButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="jScrollPane1" alignment="1" min="-2" pref="375" max="-2" attributes="0"/>
+                                  <Component id="StationImageField" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -107,6 +93,17 @@
                                   <Component id="StationNameField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="StationCnpjField" alignment="0" max="32767" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="StationClearButton" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="StationSearchButton" min="-2" pref="91" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="StationUpdateButton" min="-2" pref="73" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="StationRemoveButton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="StationInsertButton" min="-2" pref="65" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -151,12 +148,13 @@
                           <Component id="StationImageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="StationImageField" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="StationInsertButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="StationRemoveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="StationUpdateButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="StationClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="StationSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="142" max="-2" attributes="0"/>
@@ -263,6 +261,14 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StationClearButtonActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="StationSearchButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="pesquisar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="StationSearchButtonActionPerformed"/>
+              </Events>
+            </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -309,7 +315,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" pref="0" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="389" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="FuelPriceLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -320,16 +326,17 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="FuelPriceField" max="32767" attributes="0"/>
                                   <Component id="FuelTypeField" max="32767" attributes="0"/>
-                                  <Component id="FuelDateField" max="32767" attributes="0"/>
+                                  <Component id="FuelDateField" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="97" max="32767" attributes="0"/>
                               <Component id="FuelClearButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FuelUpdateButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="FuelSearchButton" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="FuelRemoveButton" min="-2" max="-2" attributes="0"/>
+                              <Component id="FuelUpdateButton" min="-2" pref="73" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="FuelRemoveButton" min="-2" pref="77" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="FuelInsertButton" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -361,7 +368,7 @@
                           <Component id="FuelPriceField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="FuelPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="9" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="FuelDateField" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="FuelDateLabel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -371,6 +378,7 @@
                           <Component id="FuelInsertButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="FuelRemoveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="FuelUpdateButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="FuelSearchButton" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="FuelClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -466,6 +474,12 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FuelClearButtonActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="FuelSearchButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="pesquisar"/>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
               <AuxValues>

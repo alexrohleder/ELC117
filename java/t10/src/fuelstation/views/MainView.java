@@ -56,6 +56,7 @@ public class MainView extends javax.swing.JFrame
         StationRemoveButton = new javax.swing.JButton();
         StationUpdateButton = new javax.swing.JButton();
         StationClearButton = new javax.swing.JButton();
+        StationSearchButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         StationTable = new javax.swing.JTable();
         FuelTab = new javax.swing.JPanel();
@@ -71,6 +72,7 @@ public class MainView extends javax.swing.JFrame
         FuelRemoveButton = new javax.swing.JButton();
         FuelUpdateButton = new javax.swing.JButton();
         FuelClearButton = new javax.swing.JButton();
+        FuelSearchButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         FuelTable = new javax.swing.JTable();
 
@@ -122,6 +124,13 @@ public class MainView extends javax.swing.JFrame
             }
         });
 
+        StationSearchButton.setText("pesquisar");
+        StationSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StationSearchButtonActionPerformed(evt);
+            }
+        });
+
         StationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -144,10 +153,11 @@ public class MainView extends javax.swing.JFrame
         StationTab.setLayout(StationTabLayout);
         StationTabLayout.setHorizontalGroup(
             StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(StationTabLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StationTabLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(StationTabLayout.createSequentialGroup()
+                .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StationTabLayout.createSequentialGroup()
                         .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(StationCompanyLabel)
                             .addComponent(StationFlagLabel)
@@ -158,29 +168,27 @@ public class MainView extends javax.swing.JFrame
                         .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(StationAddressField, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(StationCompanyField)
-                            .addComponent(StationFlagField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(StationFlagField, 0, 314, Short.MAX_VALUE)
                             .addComponent(StationCepField)
-                            .addComponent(StationImageField)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StationTabLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StationTabLayout.createSequentialGroup()
-                                .addComponent(StationClearButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(StationUpdateButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(StationRemoveButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(StationInsertButton))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(StationTabLayout.createSequentialGroup()
+                            .addComponent(StationImageField, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StationTabLayout.createSequentialGroup()
                         .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(StationNameLabel)
                             .addComponent(StationCnpjLabel))
                         .addGap(20, 20, 20)
                         .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(StationNameField)
-                            .addComponent(StationCnpjField))))
+                            .addComponent(StationCnpjField)))
+                    .addGroup(StationTabLayout.createSequentialGroup()
+                        .addComponent(StationClearButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(StationSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(StationUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(StationRemoveButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(StationInsertButton, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         StationTabLayout.setVerticalGroup(
@@ -214,12 +222,13 @@ public class MainView extends javax.swing.JFrame
                 .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StationImageLabel)
                     .addComponent(StationImageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(9, 9, 9)
                 .addGroup(StationTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StationInsertButton)
                     .addComponent(StationRemoveButton)
                     .addComponent(StationUpdateButton)
-                    .addComponent(StationClearButton))
+                    .addComponent(StationClearButton)
+                    .addComponent(StationSearchButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -269,6 +278,9 @@ public class MainView extends javax.swing.JFrame
             }
         });
 
+        FuelSearchButton.setText("pesquisar");
+        FuelSearchButton.setEnabled(false);
+
         FuelTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -294,7 +306,7 @@ public class MainView extends javax.swing.JFrame
             .addGroup(FuelTabLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
                     .addGroup(FuelTabLayout.createSequentialGroup()
                         .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(FuelPriceLabel)
@@ -304,14 +316,15 @@ public class MainView extends javax.swing.JFrame
                         .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(FuelPriceField)
                             .addComponent(FuelTypeField, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(FuelDateField)))
+                            .addComponent(FuelDateField, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FuelTabLayout.createSequentialGroup()
-                        .addGap(0, 97, Short.MAX_VALUE)
                         .addComponent(FuelClearButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FuelUpdateButton)
+                        .addComponent(FuelSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(FuelRemoveButton)
+                        .addComponent(FuelUpdateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(FuelRemoveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(FuelInsertButton))
                     .addGroup(FuelTabLayout.createSequentialGroup()
@@ -335,7 +348,7 @@ public class MainView extends javax.swing.JFrame
                 .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FuelPriceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FuelPriceLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(FuelTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(FuelDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(FuelDateLabel))
@@ -344,6 +357,7 @@ public class MainView extends javax.swing.JFrame
                     .addComponent(FuelInsertButton)
                     .addComponent(FuelRemoveButton)
                     .addComponent(FuelUpdateButton)
+                    .addComponent(FuelSearchButton)
                     .addComponent(FuelClearButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -412,6 +426,10 @@ public class MainView extends javax.swing.JFrame
         fuelController.select();
     }//GEN-LAST:event_FuelTableMouseClicked
 
+    private void StationSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationSearchButtonActionPerformed
+        stationController.search();
+    }//GEN-LAST:event_StationSearchButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton FuelClearButton;
     private javax.swing.JFormattedTextField FuelDateField;
@@ -420,6 +438,7 @@ public class MainView extends javax.swing.JFrame
     private javax.swing.JFormattedTextField FuelPriceField;
     private javax.swing.JLabel FuelPriceLabel;
     private javax.swing.JButton FuelRemoveButton;
+    private javax.swing.JButton FuelSearchButton;
     private javax.swing.JComboBox FuelStationField;
     private javax.swing.JLabel FuelStationLabel;
     private javax.swing.JPanel FuelTab;
@@ -444,6 +463,7 @@ public class MainView extends javax.swing.JFrame
     private javax.swing.JTextField StationNameField;
     private javax.swing.JLabel StationNameLabel;
     private javax.swing.JButton StationRemoveButton;
+    private javax.swing.JButton StationSearchButton;
     private javax.swing.JPanel StationTab;
     private javax.swing.JTable StationTable;
     private javax.swing.JButton StationUpdateButton;
