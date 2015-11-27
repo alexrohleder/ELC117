@@ -1,21 +1,39 @@
 package fuelstation.views;
 
 import fuelstation.controllers.StationController;
-import java.awt.Frame;
+import fuelstation.database.models.Station;
 import javax.swing.JDialog;
+import java.awt.Frame;
+import javax.swing.ImageIcon;
 
 public class StationView extends JDialog
 {
     private StationController controller;
+    private Station station;
     
     public StationView(Frame parent, boolean modal, StationController controller) {
         super(parent, modal);
+        
         initComponents();
+        initImage();
+        
         this.controller = controller;
+        
+    }
+    
+    private void initImage()
+    {
+        try {
+            image.setIcon(new ImageIcon(station.getImage()));
+        } catch (Exception e) {
+            // ...
+        }
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
+        image = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -23,16 +41,23 @@ public class StationView extends JDialog
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(image)
+                .addContainerGap(390, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(image)
+                .addContainerGap(289, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel image;
     // End of variables declaration//GEN-END:variables
 }

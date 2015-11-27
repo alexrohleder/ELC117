@@ -8,10 +8,12 @@ import fuelstation.database.models.FuelTableModel;
 import fuelstation.database.models.StationListModel;
 import fuelstation.database.models.StationTableModel;
 import java.io.File;
+import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainView extends javax.swing.JFrame 
 {
@@ -422,6 +424,7 @@ public class MainView extends javax.swing.JFrame
     }//GEN-LAST:event_FuelClearButtonActionPerformed
 
     private void StationTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StationTableMouseClicked
+        // int id = (int) StationTable.getValueAt(StationTable.getSelectedRow(), 0);
         new StationView(this, false, stationController).setVisible(true);
     }//GEN-LAST:event_StationTableMouseClicked
 
@@ -432,6 +435,7 @@ public class MainView extends javax.swing.JFrame
     private void StationImageFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_StationImageFieldFocusGained
         if (StationImageField.getText().equals("")) {
             JFileChooser fc = new JFileChooser();
+            fc.setFileFilter(new FileNameExtensionFilter("Image Files", ImageIO.getReaderFileSuffixes()));
             if (fc.showOpenDialog(null) == fc.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 StationImageField.setText(file.getPath());
