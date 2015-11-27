@@ -11,14 +11,14 @@ public class StationView extends JDialog
     private StationController controller;
     private Station station;
     
-    public StationView(Frame parent, boolean modal, StationController controller) {
+    public StationView(Frame parent, boolean modal, Station station, StationController controller) {
         super(parent, modal);
+        
+        this.controller = controller;
+        this.station = station;
         
         initComponents();
         initImage();
-        
-        this.controller = controller;
-        
     }
     
     private void initImage()

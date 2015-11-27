@@ -15,7 +15,7 @@ public class Station
         
     }
 
-    public Station(Integer id, Integer cnpj, String name, String companyName, Flag flag, String address, Integer cep) {
+    public Station(Integer id, Integer cnpj, String name, String companyName, Flag flag, String address, Integer cep, String image) {
         this.id = id;
         this.cnpj = cnpj;
         this.name = name;
@@ -23,6 +23,7 @@ public class Station
         this.flag = flag;
         this.address = address;
         this.cep = cep;
+        this.image = image;
     }
 
     public Integer getId() {

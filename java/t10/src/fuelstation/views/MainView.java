@@ -5,6 +5,7 @@ import fuelstation.controllers.StationController;
 import fuelstation.database.models.FlagListModel;
 import fuelstation.database.models.FuelListModel;
 import fuelstation.database.models.FuelTableModel;
+import fuelstation.database.models.Station;
 import fuelstation.database.models.StationListModel;
 import fuelstation.database.models.StationTableModel;
 import java.io.File;
@@ -81,6 +82,7 @@ public class MainView extends javax.swing.JFrame
         FuelTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         StationTab.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -424,8 +426,8 @@ public class MainView extends javax.swing.JFrame
     }//GEN-LAST:event_FuelClearButtonActionPerformed
 
     private void StationTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StationTableMouseClicked
-        // int id = (int) StationTable.getValueAt(StationTable.getSelectedRow(), 0);
-        new StationView(this, false, stationController).setVisible(true);
+        Station station = (Station) StationTable.getValueAt(StationTable.getSelectedRow(), -1);
+        new StationView(this, false, station, stationController).setVisible(true);
     }//GEN-LAST:event_StationTableMouseClicked
 
     private void StationSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StationSearchButtonActionPerformed
@@ -436,7 +438,7 @@ public class MainView extends javax.swing.JFrame
         if (StationImageField.getText().equals("")) {
             JFileChooser fc = new JFileChooser();
             fc.setFileFilter(new FileNameExtensionFilter("Image Files", ImageIO.getReaderFileSuffixes()));
-            if (fc.showOpenDialog(null) == fc.APPROVE_OPTION) {
+            if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 StationImageField.setText(file.getPath());
             }
