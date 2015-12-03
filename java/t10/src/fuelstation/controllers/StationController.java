@@ -111,8 +111,6 @@ public class StationController extends AbstractController<StationDao>
                             this.model.find(this.view.getStationAddressField().getText())
                         )
                 );
-                
-                this.reloadStationTable();
             } catch (SQLException e) {
                 this.view.getStationError().setText(e.toString());
             }
