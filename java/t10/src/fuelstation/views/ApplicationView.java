@@ -2,11 +2,11 @@ package fuelstation.views;
 
 import fuelstation.controllers.FuelController;
 import fuelstation.controllers.StationController;
-import fuelstation.database.models.FuelListModel;
 import fuelstation.database.models.FuelTableModel;
 import fuelstation.database.models.domain.Station;
 import fuelstation.database.models.StationListModel;
 import fuelstation.database.models.StationTableModel;
+import fuelstation.database.models.domain.Fuel;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
@@ -313,6 +313,11 @@ public class ApplicationView extends javax.swing.JFrame
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        FuelTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                FuelTableMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(FuelTable);
 
         FuelErrorLabel.setForeground(new java.awt.Color(255, 51, 51));
@@ -462,6 +467,13 @@ public class ApplicationView extends javax.swing.JFrame
     private void FuelInsertButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FuelInsertButtonActionPerformed
         fuelController.insert();
     }//GEN-LAST:event_FuelInsertButtonActionPerformed
+
+    private void FuelTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FuelTableMouseClicked
+        Fuel fuel = (Fuel) FuelTable.getValueAt(FuelTable.getSelectedRow(), -1);
+        
+        getFuelDateField().setText(fuel.getDate());
+        getFuelPriceField().setText(fuel.getPrice());
+    }//GEN-LAST:event_FuelTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton FuelClearButton;

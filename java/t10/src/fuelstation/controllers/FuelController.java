@@ -45,12 +45,43 @@ public class FuelController extends AbstractController<FuelDao>
 
     @Override
     public void update() {
-    
+        if (this.view.getFuelTable().getSelectedRow() == -1) {
+            this.view.getFuelError().setText("antes de alterar um combustivel você seleciona-lo na tabela.");
+        } else {
+            if (checkForNullFields()) {
+                this.view.getFuelError().setText("nenhum campo pode estar vazio.");
+            } else {
+                try {
+                    Station station = (Station) this.view.getFuelStationField().getSelectedItem();
+                    Fuel fuel = new Fuel(
+                            null,
+                            station.getId(),
+                            this.view.getFuelTypeField().getSelectedItem().toString(),
+                            this.view.getFuelPriceField().getText(),
+                            this.view.getFuelDateField().getText()
+                    );
+
+                    this.model.update(fuel);
+                    this.reloadFuelTable();
+                } catch (SQLException e) {
+                    this.view.getFuelError().setText(e.toString());
+                }
+            }
+        }
     }
 
     @Override
     public void remove() {
-        
+        if (this.view.getFuelTable().getSelectedRow() == -1) {
+            this.view.getFuelError().setText("antes de remover um combustivel você seleciona-lo na tabela.");
+        } else {
+            try {
+                this.model.delete(this.view.getFuelTableSelectedId());
+                this.reloadFuelTable();
+            } catch (SQLException e) {
+                this.view.getFuelError().setText(e.toString());
+            }
+        }
     }
 
     @Override
@@ -61,7 +92,8 @@ public class FuelController extends AbstractController<FuelDao>
     
     private boolean checkForNullFields()
     {
-        return this.view.getFuelDateField().getText().equals("")
+        return this.view.getFuelStationField().getSelectedIndex() == -1
+                || this.view.getFuelDateField().getText().equals("")
                 || this.view.getFuelPriceField().getText().equals("");
     }
     

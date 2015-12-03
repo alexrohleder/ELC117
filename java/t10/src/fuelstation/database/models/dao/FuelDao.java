@@ -24,7 +24,11 @@ public class FuelDao extends AbstractDao <Fuel, Integer>
 
     @Override
     protected String getUpdateDml(Fuel t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "update Fuels set " +
+               "type = '" + t.getType() + "'," +
+               "price = '" + t.getPrice() + "'," + 
+               "date = '" + t.getDate() + "'"+
+            " where id = " + t.getId();
     }
 
     @Override

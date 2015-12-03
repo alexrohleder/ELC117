@@ -49,9 +49,10 @@ public class FuelTableModel extends AbstractTableModel
     public Object getValueAt(int rowIndex, int columnIndex)
     {
         switch (columnIndex) {
-            case 0: return fuels.get(rowIndex).getId();
-            case 1: return fuels.get(rowIndex).getType();
-            case 2: return fuels.get(rowIndex).getPrice();
+            case -1: return fuels.get(rowIndex);
+            case  0: return fuels.get(rowIndex).getId();
+            case  1: return fuels.get(rowIndex).getType();
+            case  2: return fuels.get(rowIndex).getPrice();
 
             default: return null;
         }
