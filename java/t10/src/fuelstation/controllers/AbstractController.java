@@ -1,18 +1,18 @@
 package fuelstation.controllers;
 
 import javax.swing.table.AbstractTableModel;
-import fuelstation.views.MainView;
+import fuelstation.views.ApplicationView;
 
 public abstract class AbstractController<Model>
 {
-    private MainView view;
+    private ApplicationView view;
     private AbstractTableModel model;
 
-    public MainView getView() {
+    public ApplicationView getView() {
         return view;
     }
 
-    public void setView(MainView view) {
+    public void setView(ApplicationView view) {
         this.view = view;
     }
 

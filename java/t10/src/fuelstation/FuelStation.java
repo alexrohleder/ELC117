@@ -3,9 +3,9 @@ package fuelstation;
 
 import fuelstation.database.connectors.Connector;
 import fuelstation.database.connectors.strategy.SQLiteStrategyConnector;
-import fuelstation.views.MainView;
+import javax.swing.UnsupportedLookAndFeelException;
+import fuelstation.views.ApplicationView;
 import java.sql.SQLException;
-import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 public class FuelStation
@@ -18,29 +18,18 @@ public class FuelStation
             if (Connector.migrated() == false) {
                 Connector.migrate();
             }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        
-        init();
-        
-        Connector.disconnect();
-    }
-    
-    protected static void init()
-    {
-        try {
+            
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName()); break;
                 }
             }
             
-            SwingUtilities.invokeLater(() -> {
-                new MainView().setVisible(true);
-            });
-        } catch (Exception e) {
+            new ApplicationView().setVisible(true);
+        } catch (SQLException | ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             System.out.println(e.getMessage());
         }
+        
+        Connector.disconnect();
     }
 }

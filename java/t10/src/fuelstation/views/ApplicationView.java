@@ -16,14 +16,14 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JTextField;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class MainView extends javax.swing.JFrame 
+public class ApplicationView extends javax.swing.JFrame 
 {
     private StationTableModel stationTableModel;
     private StationController stationController;
     private FuelTableModel fuelTableModel;
     private FuelController fuelController;
     
-    public MainView() {
+    public ApplicationView() {
         initComponents();
 
         stationTableModel = new StationTableModel();

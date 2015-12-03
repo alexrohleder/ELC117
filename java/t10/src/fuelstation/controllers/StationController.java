@@ -2,14 +2,14 @@ package fuelstation.controllers;
 
 import fuelstation.database.models.Station;
 import fuelstation.database.models.StationTableModel;
-import fuelstation.views.MainView;
+import fuelstation.views.ApplicationView;
 
 public class StationController extends AbstractController
 {
-    private MainView view;
+    private ApplicationView view;
     private StationTableModel model;
     
-    public StationController(MainView view, StationTableModel model)
+    public StationController(ApplicationView view, StationTableModel model)
     {
         this.view = view;
         this.model = model;
