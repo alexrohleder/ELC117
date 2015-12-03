@@ -30,7 +30,12 @@ public abstract class AbstractDao <T, PK>
         Connector.execute(getDeleteDml(id));
     }
     
-    private List<T> results(ResultSet rs) throws SQLException {
+    public List<T> where(String where) throws SQLException {
+        ResultSet rs = Connector.execute(getWhereDml(where));
+        return results(rs);
+    }
+    
+    protected List<T> results(ResultSet rs) throws SQLException {
         List<T> results = new ArrayList<>();
         
         while (rs.next()) {
@@ -46,5 +51,6 @@ public abstract class AbstractDao <T, PK>
     protected abstract String getUpdateDml(T t);
     protected abstract String getDeleteDml(PK id);
     protected abstract String getAllDml();
+    protected abstract String getWhereDml(String where);
     protected abstract T from(ResultSet rs) throws SQLException;
 }

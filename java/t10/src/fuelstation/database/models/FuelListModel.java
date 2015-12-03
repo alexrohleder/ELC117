@@ -1,5 +1,8 @@
 package fuelstation.database.models;
 
+import fuelstation.database.models.dao.FuelDao;
+import fuelstation.database.models.domain.Fuel;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.AbstractListModel;
 import javax.swing.ComboBoxModel;
@@ -7,11 +10,16 @@ import javax.swing.ComboBoxModel;
 public class FuelListModel extends AbstractListModel implements ComboBoxModel
 {
     private Object selected;
-    private ArrayList<Flag> fuels;
+    private ArrayList<Fuel> fuels;
     
     public FuelListModel()
     {
-        fuels = new ArrayList<>();
+        try {
+            FuelDao dao = new FuelDao();
+            fuels = (ArrayList) dao.all();
+        } catch (SQLException e) {
+            fuels = new ArrayList<>();
+        }
     }
     
     @Override

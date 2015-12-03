@@ -1,55 +1,72 @@
 package fuelstation.controllers;
 
-import fuelstation.database.models.Fuel;
 import fuelstation.database.models.FuelTableModel;
+import fuelstation.database.models.domain.Fuel;
+import fuelstation.database.models.dao.FuelDao;
+import fuelstation.database.models.domain.Station;
 import fuelstation.views.ApplicationView;
+import java.sql.SQLException;
 
-public class FuelController extends AbstractController<Fuel>
+public class FuelController extends AbstractController<FuelDao>
 {
     private ApplicationView view;
-    private FuelTableModel model;
+    private FuelDao model;
     
-    public FuelController(ApplicationView view, FuelTableModel model)
+    public FuelController(ApplicationView view)
     {
-        this.view = view;
-        this.model = model;
+        this.model = new FuelDao();
+        this.view  = view;
     }
     
     @Override
     public void insert()
     {
-        Fuel fuel = make();
+        if (checkForNullFields()) {
+            this.view.getFuelError().setText("nenhum campo pode estar vazio.");
+        } else {
+            try {
+                Station station = (Station) this.view.getFuelStationField().getSelectedItem();
+                Fuel fuel = new Fuel(
+                        null,
+                        station.getId(),
+                        this.view.getFuelTypeField().getSelectedItem().toString(),
+                        this.view.getFuelPriceField().getText(),
+                        this.view.getFuelDateField().getText()
+                );
+
+                this.model.create(fuel);
+                this.clear();
+                this.reloadFuelTable();
+            } catch (SQLException e) {
+                this.view.getFuelError().setText(e.toString());
+            }
+        }
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     @Override
     public void remove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void select() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.view.getFuelDateField().setText("");
+        this.view.getFuelPriceField().setText("");
     }
     
-    public Fuel make()
+    private boolean checkForNullFields()
     {
-        try {
-            Fuel fuel = new Fuel();
-                 fuel.setType(view.getFuelTypeField().getSelectedItem().toString());
-                 fuel.setPrice(Float.parseFloat(view.getFuelPriceField().getText()));
-            return fuel;
-        } catch (NumberFormatException e) {
-            return null;
-        }
+        return this.view.getFuelDateField().getText().equals("")
+                || this.view.getFuelPriceField().getText().equals("");
+    }
+    
+    private void reloadFuelTable()
+    {
+        this.view.getFuelTable().setModel(new FuelTableModel());
     }
 }

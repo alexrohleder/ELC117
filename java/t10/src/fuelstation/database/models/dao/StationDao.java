@@ -1,11 +1,19 @@
 package fuelstation.database.models.dao;
 
+import fuelstation.database.connectors.Connector;
 import fuelstation.database.models.domain.Station;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class StationDao extends AbstractDao <Station, Integer>
 {
+    public List<Station> find(String address) throws SQLException
+    {
+        ResultSet rs = Connector.execute("select * from Stations where address like '%" + address + "%'");
+        return results(rs);
+    }
+    
     @Override
     protected String getInsertDml(Station t) {
         return "insert into Stations values (" +
@@ -61,5 +69,10 @@ public class StationDao extends AbstractDao <Station, Integer>
         station.setImage(rs.getString("image"));
         
         return station;
+    }
+
+    @Override
+    protected String getWhereDml(String where) {
+        return "select * from Stations where " + where;
     }
 }

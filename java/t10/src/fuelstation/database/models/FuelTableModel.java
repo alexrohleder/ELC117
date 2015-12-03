@@ -1,16 +1,30 @@
 package fuelstation.database.models;
 
+import fuelstation.database.models.dao.FuelDao;
+import fuelstation.database.models.domain.Fuel;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class FuelTableModel extends AbstractTableModel
 {
     private static final String[] columnNames = {"id", "nome", "preço"};
-    private ArrayList<Fuel> fuels;
+    private List<Fuel> fuels;
+    
+    public FuelTableModel(List<Fuel> fuels)
+    {
+        this.fuels = fuels;
+    }
     
     public FuelTableModel()
     {
-        fuels = new ArrayList<>();
+        try {
+            FuelDao dao = new FuelDao();
+            fuels = (ArrayList) dao.all();
+        } catch (SQLException e) {
+            fuels = new ArrayList<>();
+        }
     }
     
     @Override

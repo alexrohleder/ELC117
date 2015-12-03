@@ -6,7 +6,7 @@ import fuelstation.views.ApplicationView;
 public abstract class AbstractController<Model>
 {
     private ApplicationView view;
-    private AbstractTableModel model;
+    private Model model;
 
     public ApplicationView getView() {
         return view;
@@ -16,18 +16,16 @@ public abstract class AbstractController<Model>
         this.view = view;
     }
 
-    public AbstractTableModel getModel() {
+    public Model getModel() {
         return model;
     }
 
-    public void setModel(AbstractTableModel model) {
+    public void setModel(Model model) {
         this.model = model;
     }
     
     public abstract void insert();
     public abstract void update();
     public abstract void remove();
-    public abstract void select();
     public abstract void clear();
-    public abstract Model make();
 }

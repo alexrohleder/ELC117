@@ -33,7 +33,10 @@ public class Connector
     
     public static ResultSet execute(String sql) throws SQLException
     {
-        return stmt.executeQuery(sql);
+        if (!sql.contains("insert") && !sql.contains("delete") && !sql.contains("update")) {
+            return stmt.executeQuery(sql);
+        } else stmt.executeUpdate(sql);
+        return null;
     }
     
     public static boolean migrated() throws SQLException
@@ -53,20 +56,8 @@ public class Connector
     
     public static void migrate() throws SQLException
     {
-        migrateFlagsTable();
         migrateStationsTable();
         migrateFuelsTable();
-        migrateStationFuelsTable();
-    }
-    
-    private static void migrateFlagsTable() throws SQLException
-    {
-        stmt.executeUpdate(
-                "CREATE TABLE Flags (" +
-                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "name VARCHAR(80) NOT NULL" +
-                ")"
-        );
     }
     
     private static void migrateStationsTable() throws SQLException
@@ -90,19 +81,10 @@ public class Connector
         stmt.executeUpdate(
                 "CREATE TABLE Fuels (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    "name VARCHAR(80) NOT NULL" +
-                ")"
-        );
-    }
-    
-    private static void migrateStationFuelsTable() throws SQLException
-    {
-        stmt.executeUpdate(
-                "CREATE TABLE StationFuels (" +
-                    "station_id INTEGER NOT NULL," +
-                    "fuel_id INTEGER NOT NULL," +
-                    "collect DATE NOT NULL," +
-                    "price DECIMAL NOT NULL" +
+                    "id_station INTEGER NOT NULL," +
+                    "type VARCHAR(80) NOT NULL," +
+                    "price VARCHAR(10) NOT NULL," +
+                    "date VARCHAR(10) NOT NULL" +
                 ")"
         );
     }

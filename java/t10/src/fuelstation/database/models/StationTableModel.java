@@ -1,17 +1,29 @@
 package fuelstation.database.models;
 
+import fuelstation.database.models.dao.StationDao;
+import fuelstation.database.models.domain.Station;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class StationTableModel extends AbstractTableModel
 {
     private static final String[] columnNames = {"id", "cnpj", "nome", "nome social", "bandeira", "endereço", "cep"};
-    private ArrayList<Station> stations;
+    private List<Station> stations;
+    
+    public StationTableModel(List<Station> stations) {
+        this.stations = stations;
+    }
     
     public StationTableModel()
     {
-        stations = new ArrayList<>();
-        stations.add(new Station(1, 99999999, "teste", "huhu", new Flag(3, "Texaco"), "rua tal", 9803894, "C:\\Users\\Alex Rohleder\\Documents\\codeburner.png"));
+        try {
+            StationDao dao = new StationDao();
+            stations = (ArrayList) dao.all();
+        } catch (SQLException e) {
+            stations = new ArrayList<>();
+        }
     }
     
     @Override
@@ -41,7 +53,7 @@ public class StationTableModel extends AbstractTableModel
             case  1: return stations.get(rowIndex).getCnpj();
             case  2: return stations.get(rowIndex).getName();
             case  3: return stations.get(rowIndex).getCompanyName();
-            case  4: return stations.get(rowIndex).getFlag().getName();
+            case  4: return stations.get(rowIndex).getFlag();
             case  5: return stations.get(rowIndex).getAddress();
             case  6: return stations.get(rowIndex).getCep();
 
