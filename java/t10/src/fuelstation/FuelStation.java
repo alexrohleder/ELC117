@@ -1,8 +1,8 @@
 
 package fuelstation;
 
-import fuelstation.database.connectors.Connection;
-import fuelstation.database.connectors.SQLiteConnector;
+import fuelstation.database.connectors.Connector;
+import fuelstation.database.connectors.strategy.SQLiteStrategyConnector;
 import fuelstation.views.MainView;
 import java.sql.SQLException;
 import javax.swing.SwingUtilities;
@@ -12,11 +12,11 @@ public class FuelStation
 {
     public static void main(String[] args)
     {
-        Connection.connect(new SQLiteConnector());
+        Connector.connect(new SQLiteStrategyConnector());
         
         try {
-            if (Connection.migrated() == false) {
-                Connection.migrate();
+            if (Connector.migrated() == false) {
+                Connector.migrate();
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -24,7 +24,7 @@ public class FuelStation
         
         init();
         
-        Connection.disconnect();
+        Connector.disconnect();
     }
     
     protected static void init()

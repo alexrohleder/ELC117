@@ -1,16 +1,17 @@
 package fuelstation.database.connectors;
 
+import fuelstation.database.connectors.strategy.ConectorStrategyInterface;
 import java.sql.ResultSet;
 import java.sql.SQLDataException;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Connection
+public class Connector
 {
     protected static Statement stmt;
-    protected static ConectorInterface conn;
+    protected static ConectorStrategyInterface conn;
     
-    public static void connect(ConectorInterface connector)
+    public static void connect(ConectorStrategyInterface connector)
     {
         try {
             conn = connector;
